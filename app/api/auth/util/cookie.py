@@ -14,6 +14,8 @@ def with_jwt(res: Response, user: dict) -> Response:
 
     res.set_cookie('user_token', encoded, expires=expires)
 
+    print(user['id'], user['name'], user['student_id'], user['bocoin'], encoded);
+
     send_token(user['id'], user['name'], user['student_id'], user['bocoin'], encoded)
 
     return res
@@ -23,7 +25,7 @@ def without_jwt(res: Response) -> Response:
     res.set_cookie('user_token', "", expires=-1)
     return res
 
-def send_token(user_id, name, school_id, bocoin, encoded):
+def send_token(user_id, name, student_id, bocoin, encoded):
     laravelApiUrl = 'https://demo.dev-laravel.co/api/user_token/check'
     payload = {
         'user_id': user_id, 
@@ -32,4 +34,5 @@ def send_token(user_id, name, school_id, bocoin, encoded):
         'bocoin': bocoin,
         'user_token': encoded
         }
+    print(payload);    
     r = requests.post(laravelApiUrl, json=payload)
