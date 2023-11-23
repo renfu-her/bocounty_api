@@ -30,5 +30,6 @@ def verify():
     data = get_jwt_data()
     user = get_login_user()
     return with_jwt(success({
-        "data": data
+        "data": data,
+        "user": user
     }), user)
