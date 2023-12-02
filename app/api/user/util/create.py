@@ -1,6 +1,8 @@
 from app.database.util import create
 from app.utils.time_util import get_current, date2str
-from flask import request
+from flask import request, current_app, Flask
+from app.utils.email_util import send_verify_email
+import threading
 
 
 def create_user():
@@ -31,4 +33,18 @@ def create_user():
             "item_id": item_id,
         })
 
+    if current_app.config["MAIL_ENABLE"]:
+        thread = FlaskThread(
+            target=send_verify_email, args=[payload.get('student_id')])
+        thread.start()
 
+
+class FlaskThread(threading.Thread):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        # type: ignore[attr-defined]
+        self.app: Flask = current_app._get_current_object()
+
+    def run(self) -> None:
+        with self.app.app_context():
+            super().run()
