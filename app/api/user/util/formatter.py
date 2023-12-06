@@ -10,7 +10,7 @@ def format_create_payload():
 
     payload["id"] = new_id
     payload["password"] = sha256(payload["password"].encode("utf-8")).hexdigest()
-    payload["bocoin"] = 0
+    payload["bocoin"] = 100
     payload["intro"] = "留下你的自我介紹吧!"
     payload["name"] = "新進冒險者"
     payload["verify"] = 0

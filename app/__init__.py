@@ -48,4 +48,7 @@ def register_blueprints(app: Flask):
     from app.api.admin.route import admin_api
     app.register_blueprint(admin_api)
 
+    from  app.page.verify.route import verify_page
+    app.register_blueprint(verify_page)
+
 

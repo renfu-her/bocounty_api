@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request,current_app, Flask
 from app.database.model.account import (
     get_account_by_student_id,
     update_account_by_id
@@ -16,6 +16,7 @@ from .util.formatter import format_create_payload, format_edit_payload
 from .util.create import create_user
 from app.utils.auth.auth_util import required_login
 
+
 user_api = Blueprint("user_api", __name__, url_prefix="/user")
 
 
@@ -27,7 +28,15 @@ def get_detail(student_id):
     user = get_account_by_student_id(student_id)
 
     return success({
-        "data": user
+        "data": {
+            "bocoin": user.bocoin,
+            "id": user.id,
+            "intro": user.intro,
+            "name": user.name,
+            "role": user.role,
+            "student_id": user.student_id,
+            "verify": user.verify
+        }
     })
 
 

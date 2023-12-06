@@ -35,3 +35,7 @@ def not_found(message: str = "user no found"):
     }), 404))
 
 
+def not_enough_coin():
+    raise HTTPException(response=make_response(jsonify({
+        "message": "not enough coin"
+    }), 400))
