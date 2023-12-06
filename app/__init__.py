@@ -9,6 +9,7 @@ def create_app(config_filename=None):
         main.config.from_pyfile(config_filename)
 
     register_blueprints(main)
+    main.url_map.strict_slashes = False
 
     return main
 
