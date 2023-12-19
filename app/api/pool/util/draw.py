@@ -44,8 +44,15 @@ def draw_card(pool_id:str):
 
     update_item(res)
 
-    return res
+    return convert_item(res)
 
+def convert_item(itemList: list[PoolItem]):
+    res = []
+    for i in itemList:
+        res.append(get("item",{
+            "id":i.item_id
+        })[0])
+    return res
 
 def update_item(item_list: list[PoolItem]):
     user = get_login_user()
