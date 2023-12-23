@@ -33,5 +33,5 @@ def format_edit_payload():
         payload["name"] = name
     
     bocoin = payload.get("bocoin")
-    if name is not None:
+    if bocoin is not None:
         payload["bocoin"] = bocoin
