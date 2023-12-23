@@ -5,11 +5,11 @@ STORAGE_PATH: str = os.path.join(os.path.abspath("."), "storage")
 SETTING_FILE: str = os.path.join(os.path.abspath("."), "setting.json")
 DEBUG: bool = True
 MAIL_ENABLE = True
-MAIL_HOST = "pony076152340@gmail.com"
-MAIL_PASSWORD = "ettesucqlqgpnliq"
+MAIL_HOST = "bocounty2022@gmail.com"
+MAIL_PASSWORD = "qzoejyriakvczlht"
 MAIL_PORT = 587
-MAIL_PATTERN = "%s@gmail.com"
-MAIL_VERIFY_HOST = "192.168.1.1"
+MAIL_PATTERN = "%s@gms.ndhu.edu.tw"
+MAIL_VERIFY_HOST = "35.206.249.212:8000"
 #
 #   {
 #   "enable": true,
